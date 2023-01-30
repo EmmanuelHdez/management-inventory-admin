@@ -1,8 +1,13 @@
 import { CssBaseline } from '@mui/material';
 import Topbar from './views/global/Topbar';
-import Sidebar from './views/global/Sidebar';
+import SideMenu from './views/global/Menu';
 // import Dashboard from './views/dashboard';
 import { Routes, Route } from "react-router-dom";
+import { ProSidebarProvider } from 'react-pro-sidebar';
+
+<ProSidebarProvider>
+  <App />
+</ProSidebarProvider>;
 
 function App() {
   return (
@@ -10,7 +15,9 @@ function App() {
       <CssBaseline/>
       <div className="body">
 
-          <Sidebar/>
+          <ProSidebarProvider>
+            <SideMenu/>
+          </ProSidebarProvider>
 
           <main className='content'>
               <Topbar/>
