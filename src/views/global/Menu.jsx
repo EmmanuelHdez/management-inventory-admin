@@ -7,6 +7,7 @@ import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import logoApp from '../../assets/logoApp-stock.webp';
+import hideBtn from '../../assets/control.png';
 import { Typography } from "@mui/material";
 import {
     Sidebar,
@@ -33,7 +34,8 @@ const rgbaConverter = (hex, alpha) =>  {
 
 function SideMenu () {
 
-    const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();           
+    const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar(); 
+    const [selected, setSelected] = useState("Dashboard");
 
 
     const menuItemStyles = {
@@ -78,13 +80,22 @@ function SideMenu () {
                 }}
             >
                 <div className="flex flex-col h-full">
-                    <div className="mb-[27px] mt-[15px]">
+                    <div className={`${collapsed ? '0px' : 'mt-[15px]'} mb-[27px]`}>
                         <div className="flex">
                             <img src={logoApp} className={`cursor-pointer duration-500 w-[150px] mx-auto 
                                 ${collapsed && "rotate-[360deg]"}
                             `}/>
                         </div>                        
                     </div>
+                    
+
+                    <div className='flex justify-self-end m-auto mb-5'>
+                        <img src={hideBtn} className={`align-middle top-[25%] cursor-pointer relative duration-300 ${collapsed && "rotate-180"}`}
+                        onClick={() => collapseSidebar()}
+                        />
+                    </div>
+
+
                     <div className="flex-1 mb-[32px]">
 
 
@@ -97,7 +108,9 @@ function SideMenu () {
 
                         {/* Inventory Section */}
 
-                        <div className="py-0 px-[24px] mb-[8px] mt-[30px]">
+                        <div className={`py-0 px-[24px] mb-[8px]  
+                            ${collapsed ? "mt-0" : "mt-[30px]"}
+                        `}>
                             <Typography
                                 variant="body2"
                                 fontWeight={600}
@@ -118,7 +131,9 @@ function SideMenu () {
 
                         {/* Groups of Inventory */}
 
-                        <div className="py-0 px-[24px] mb-[8px] mt-[35px]">
+                        <div className={`py-0 px-[24px] mb-[8px]  
+                            ${collapsed ? "mt-0" : "mt-[30px]"}
+                        `}>
                             <Typography
                                 variant="body2"
                                 fontWeight={600}
@@ -140,7 +155,9 @@ function SideMenu () {
 
                         {/* Groups of Inventory */}
 
-                        <div className="py-0 px-[24px] mb-[8px] mt-[35px]">
+                        <div className={`py-0 px-[24px] mb-[8px]  
+                            ${collapsed ? "mt-0" : "mt-[30px]"}
+                        `}>
                             <Typography
                                 variant="body2"
                                 fontWeight={600}
@@ -166,7 +183,6 @@ function SideMenu () {
 
 
             </Sidebar>
-            <button onClick={() => collapseSidebar()}>Collapse</button>
         </div>
     )
 }
