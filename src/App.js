@@ -4,6 +4,9 @@ import SideMenu from './views/global/Menu';
 // import Dashboard from './views/dashboard';
 import { Routes, Route } from "react-router-dom";
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import { Dashboard } from './views/dashboard';
+import InventoryView from './views/inventory';
+
 
 <ProSidebarProvider>
   <App />
@@ -21,8 +24,10 @@ function App() {
 
           <main className='content'>
               <Topbar/>
+
               <Routes>
-                  {/*<Route path="/" element={<Dashboard />}/>*/}
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/inventory" element={<InventoryView />} />
               </Routes>
 
           </main>

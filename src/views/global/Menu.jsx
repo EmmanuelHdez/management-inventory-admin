@@ -9,6 +9,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import logoApp from '../../assets/logoApp-stock.webp';
 import hideBtn from '../../assets/control.png';
 import { Typography } from "@mui/material";
+import { NavLink, Link } from 'react-router-dom';
 import {
     Sidebar,
     Menu,
@@ -20,6 +21,9 @@ import {
   } from 'react-pro-sidebar';
   
 
+
+
+
 const rgbaConverter = (hex, alpha) =>  {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -28,8 +32,6 @@ const rgbaConverter = (hex, alpha) =>  {
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 
 }
-
-
 
 
 function SideMenu () {
@@ -100,8 +102,8 @@ function SideMenu () {
 
 
                         <Menu menuItemStyles={menuItemStyles} className="my-[15px]">
-                            <MenuItem icon={<HomeIcon />}>
-                                Dashboard
+                            <MenuItem icon={<HomeIcon />} component={<Link to="/"/>}>
+                                Dashboard                                
                             </MenuItem>
                         </Menu>
 
@@ -121,10 +123,10 @@ function SideMenu () {
                         </div>
 
                         <Menu menuItemStyles={menuItemStyles}>
-                            <MenuItem icon={<PlaylistAddCircleIcon />}>
+                            <MenuItem icon={<PlaylistAddCircleIcon />} component={<Link to="/add-inventory" />}>
                                 Add New Item
                             </MenuItem>                            
-                            <MenuItem icon={<ImportantDevicesIcon />}>
+                            <MenuItem icon={<ImportantDevicesIcon />} component={<Link to="/inventory" />}>
                                 Manage Inventory
                             </MenuItem>
                         </Menu>
@@ -144,10 +146,10 @@ function SideMenu () {
                         </div>
 
                         <Menu menuItemStyles={menuItemStyles}>
-                            <MenuItem icon={<CategoryIcon />}>
+                            <MenuItem icon={<CategoryIcon />} component={<Link to="/inventory-categories" />}>
                                 Categories                            
                             </MenuItem>                            
-                            <MenuItem icon={<AddHomeWorkIcon />}>
+                            <MenuItem icon={<AddHomeWorkIcon />} component={<Link to="/work-areas" />}>
                                 Work Areas
                             </MenuItem>
                         </Menu>
@@ -168,10 +170,10 @@ function SideMenu () {
                         </div>
 
                         <Menu menuItemStyles={menuItemStyles}>
-                            <MenuItem icon={<GroupAddIcon />}>
+                            <MenuItem icon={<GroupAddIcon />} component={<Link to="/users" />}>
                                 Manage Users                            
                             </MenuItem>                            
-                            <MenuItem icon={<ManageAccountsIcon />}>
+                            <MenuItem icon={<ManageAccountsIcon />} component={<Link to="/user-profile" />}>
                                 Profile User
                             </MenuItem>
                         </Menu>
