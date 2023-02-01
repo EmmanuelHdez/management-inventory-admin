@@ -79,7 +79,7 @@ export default function InventoryView () {
                 <Heading title="MANAGE INVENTORY" subtitle="Manage the inventory!" icon={<ImportantDevicesIcon className="w-[45px] h-[45px]"/>}/>
             </div>
 
-            <div>
+            <div className="h-[75vh]">
                 <DataGrid rows={mockDataTeam} columns={columns}/>
             </div>
 

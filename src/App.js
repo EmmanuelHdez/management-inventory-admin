@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Dashboard } from './views/dashboard';
 import InventoryView from './views/inventory';
+import { ManageProfiles } from './views/profiles';
 
 
 <ProSidebarProvider>
@@ -28,6 +29,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/inventory" element={<InventoryView />} />
+                <Route path="/users" element={<ManageProfiles />} />
               </Routes>
 
           </main>
