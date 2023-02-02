@@ -1,3 +1,160 @@
+export const dataUsersInventory = [
+  {
+    id: 1,
+    number: "616HP",
+    name: "Jon Snow",
+    work_area: "Software Foundation",
+    employment: "Developer",
+    email: "jonsnow@gmail.com",    
+    phone: "(665)121-5454",
+    access: "admin",
+  },
+
+  {
+    id: 2,
+    number: "455HP",
+    name: "Cersei Lannister",
+    work_area: "Foundation",
+    employment: "Worker",
+    email: "cerseilannister@gmail.com",   
+    phone: "(422)982-6739",
+    access: "admin",
+  },
+
+  {
+    id: 3,
+    number: "485KI",
+    name: "Jaime Lannister",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "jaimelannister@gmail.com",   
+    phone: "(421)314-2288",
+    access: "admin",
+  },
+
+  {
+    id: 4,
+    number: "LOL222",
+    name: "Anya Stark",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "anyastark@gmail.com",    
+    phone: "(921)425-6742",
+    access: "admin",
+  },
+  {
+    id: 5,
+    number: "222MM",
+    name: "Daenerys Targaryen",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "daenerystargaryen@gmail.com",
+    age: 31,
+    phone: "(421)445-1189",
+    access: "user",
+  },
+  {
+    id: 6,
+    number: "666KK",
+    name: "Ever Melisandre",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "evermelisandre@gmail.com",    
+    phone: "(232)545-6483",
+    access: "manager",
+  },
+  {
+    id: 7,
+    number: "587MN",
+    name: "Ferrara Clifford",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "ferraraclifford@gmail.com",    
+    phone: "(543)124-0123",
+    access: "user",
+  },
+  {
+    id: 8,
+    number: "414LOP",
+    name: "Rossini Frances",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "rossinifrances@gmail.com",    
+    phone: "(222)444-5555",
+    access: "user",
+  },
+  {
+    id: 9,
+    number: "BOLOS",
+    name: "Harvey Roxie",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "harveyroxie@gmail.com",    
+    phone: "(444)555-6239",
+    access: "admin",
+  },
+  {
+    id: 10,
+    number: "616HP",
+    name: "Jon Snow",
+    work_area: "Software Foundation",
+    employment: "Developer",
+    email: "jonsnow@gmail.com",    
+    phone: "(665)121-5454",
+    access: "admin",
+  },
+
+  {
+    id: 11,
+    number: "455HP",
+    name: "Cersei Lannister",
+    work_area: "Foundation",
+    employment: "Worker",
+    email: "cerseilannister@gmail.com",   
+    phone: "(422)982-6739",
+    access: "admin",
+  },
+
+  {
+    id: 12,
+    number: "485KI",
+    name: "Jaime Lannister",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "jaimelannister@gmail.com",   
+    phone: "(421)314-2288",
+    access: "admin",
+  },
+
+  {
+    id: 13,
+    number: "LOL222",
+    name: "Anya Stark",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "anyastark@gmail.com",    
+    phone: "(921)425-6742",
+    access: "admin",
+  },
+  {
+    id: 14,
+    number: "222MM",
+    name: "Daenerys Targaryen",
+    work_area: "IT service",
+    employment: "Worker",
+    email: "daenerystargaryen@gmail.com",
+    age: 31,
+    phone: "(421)445-1189",
+    access: "user",
+  },
+  
+  
+
+]
+
+
+
+
 export const mockDataTeam = [
   {
     id: 1,

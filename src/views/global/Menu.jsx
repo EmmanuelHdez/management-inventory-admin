@@ -80,6 +80,7 @@ function SideMenu () {
                 rootStyles={{
                     color: '#ffffff',
                 }}
+                height="100%"
             >
                 <div className="flex flex-col h-full">
                     <div className={`${collapsed ? '0px' : 'mt-[15px]'} mb-[27px]`}>
