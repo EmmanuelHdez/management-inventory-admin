@@ -26,10 +26,11 @@ jobs:
         with:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)"
+          minor_pattern: "(MINOR)|^(?!.*((MAJOR)|(PATCH))).*$"
+          patch_pattern: "(PATCH)"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
-          bump_each_commit: false
+          bump_each_commit: true
           search_commit_body: true
 
       - name: Comment PR
