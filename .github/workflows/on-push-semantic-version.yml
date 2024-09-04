@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI_COMMIT_MESSAGE: CI Automatic push
@@ -66,15 +66,12 @@ jobs:
 
       - name: Update version info JSON
         run: |
-          echo "Imprimiendo el objeto github completo:"
-          echo '${{ toJson(github) }}' | jq '.'
-
-          echo "Imprimiendo github.event:"
-          echo '${{ toJson(github.event) }}' | jq '.'
+          echo "Output GitHub information:"
+          echo '${{ toJson(github) }}' | jq '.'          
 
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
-            --arg pr "${{ github.event.pull_request.html_url }}" \
+            --arg commitInfo "${{ github.event.head_commit }}" \
             --arg pr2 "${{ github.event.pull_request._links.html.href }}" \
             --arg user "${{ github.actor }}" \
             --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
@@ -82,7 +79,7 @@ jobs:
             --arg userPhoto "${{ github.event.pull_request.user.avatar_url }}" \
             '{
               "hash": $hash,
-              "pull_request_url": $pr,
+              "commitInfo": $commitInfo,
               "pull_request_url2": $pr2,
               "user": $user,
               "timestamp": $timestamp,
@@ -90,7 +87,7 @@ jobs:
               "userPhoto": $userPhoto
             }')
 
-          echo "Nueva entrada a añadir:"
+          echo "New entry to add:"
           echo "$new_entry" | jq '.'
 
           if [ -f version_info.json ]; then
