@@ -68,17 +68,15 @@ jobs:
         run: |
           echo "Github output information:"
           echo '${{ toJson(github) }}' | jq '.'
-
-          echo "Imprimiendo github.event:"
-          echo '${{ toJson(github.event) }}' | jq '.'
-
+          
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \            
             --arg user "${{ github.actor }}" \
             --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
             --arg branch "${{ github.ref_name }}" \
             --arg commitInfo "${{ github.event.head_commit }}" \
-            --arg userPhoto "${{ github.event.repository.sender.avatar_url }}" \
+            --arg userPhoto "${{ github.event.sender.avatar_url }}" \
+            
             '{
               "hash": $hash,
               "user": $user,
