@@ -119,7 +119,7 @@ function SideMenu () {
                                 fontWeight={600}
                                 style={{ opacity: collapsed ? 0 : 1, letterSpacing: '0.5px' }}
                             >
-                                Inventory
+                                Inventorydasdsad
                             </Typography>
                         </div>
 
