@@ -25,7 +25,7 @@ jobs:
 
       - name: Get branch name
         id: branch_name
-        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+        run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
       - name: Perform semantic version
         uses: paulhatch/semantic-version@v5.4.0
@@ -33,7 +33,8 @@ jobs:
         with:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)"
+          minor_pattern: "(MINOR)|^(?!.*((MAJOR)|(PATCH))).*$"
+          patch_pattern: "(PATCH)"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
           bump_each_commit: true
@@ -43,7 +44,7 @@ jobs:
         if: steps.branch_name.outputs.branch != 'master' && contains(github.event.head_commit.message, '(MAJOR)')
         run: |
           echo "Overriding MAJOR to MINOR on non-master branch"
-          echo "::set-output name=version::$(echo ${{ steps.semantic_version.outputs.version }} | awk -F. '{$2++; print $1"."$2"."$3}')"
+          echo "version=$(echo ${{ steps.semantic_version.outputs.version }} | awk -F. '{$2++; print $1"."$2"."$3}')" >> $GITHUB_OUTPUT
         id: override_version
 
       - name: Bump version and push tag
@@ -77,7 +78,7 @@ jobs:
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
             --arg pr "${{ github.event.pull_request.html_url }}" \
-            --arg user "${{ github.actor }}" \
+            --arg user "${{ github.actor }}" \WW
             --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
             --arg branch "${{ github.ref_name }}" \
             '{
@@ -97,7 +98,6 @@ jobs:
           fi
           git add version_info.json
 
-
       - name: Update CHANGELOG
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
@@ -109,3 +109,8 @@ jobs:
           fi
           sed -i "2i ## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')" CHANGELOG.md
           git add CHANGELOG.md
+
+      - name: Commit and push changes
+        run: |
+          git commit -m "chore: update CHANGELOG.md and version_info.json [skip ci]"
+          git push
