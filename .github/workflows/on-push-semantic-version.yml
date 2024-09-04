@@ -33,7 +33,7 @@ jobs:
         with:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)|^(?!.*((MAJOR)|(PATCH))).*$"
+          minor_pattern: "(MINOR)"
           patch_pattern: "(PATCH)"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
@@ -78,15 +78,19 @@ jobs:
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
             --arg pr "${{ github.event.pull_request.html_url }}" \
+            --arg pr2 "${{ github.event.pull_request._links.html.href }}" \
             --arg user "${{ github.actor }}" \
-            --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+            --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
             --arg branch "${{ github.ref_name }}" \
+            --arg userPhoto "${{ github.event.pull_request.user.avatar_url }}" \
             '{
               "hash": $hash,
               "pull_request_url": $pr,
+              "pull_request_url2": $pr2,
               "user": $user,
               "timestamp": $timestamp,
-              "branch": $branch
+              "branch": $branch,
+              "userPhoto": $userPhoto,
             }')
 
           if [ -f version_info.json ]; then
