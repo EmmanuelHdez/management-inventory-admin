@@ -1,5 +1,31 @@
 [
   {
+    "hash": "84208bfd6a5519105fcea0d4923ab5a1243c8c45",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "84208bfd6a5519105fcea0d4923ab5a1243c8c45",
+      "message": "Merge pull request #39 from EmmanuelHdez/feature/small-updates\n\n(MAJOR) - a very big update",
+      "timestamp": "2024-09-04T13:36:59-06:00",
+      "tree_id": "bec42c560dea66a40e4c5d84f2d535275981b285",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/84208bfd6a5519105fcea0d4923ab5a1243c8c45"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T20:37:18+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
     "hash": "5c6824dc7899d8e6ad19b4849b1fc05be32e7393",
     "commitInfo": {
       "author": {
