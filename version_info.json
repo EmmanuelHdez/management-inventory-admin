@@ -1,5 +1,31 @@
 [
   {
+    "hash": "5c6824dc7899d8e6ad19b4849b1fc05be32e7393",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "5c6824dc7899d8e6ad19b4849b1fc05be32e7393",
+      "message": "Merge pull request #38 from EmmanuelHdez/feature/small-updates\n\n(PATCH) - Por favor Dios",
+      "timestamp": "2024-09-04T02:55:31-06:00",
+      "tree_id": "d875f98ca0aea1c478a45510e7c363a62656e65d",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/5c6824dc7899d8e6ad19b4849b1fc05be32e7393"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:55:46+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
     "hash": "d8ecf42835e4a022b9c273f952a542964cbeaa01",
     "commitInfo": "Object",
     "pull_request_url2": "",
