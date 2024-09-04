@@ -128,7 +128,7 @@ function SideMenu () {
                                 Add New Item
                             </MenuItem>                            
                             <MenuItem icon={<ImportantDevicesIcon />} component={<Link to="/inventory" />}>
-                                Manage Inventory
+                                Manage Inventories and stuff
                             </MenuItem>
                         </Menu>
 
