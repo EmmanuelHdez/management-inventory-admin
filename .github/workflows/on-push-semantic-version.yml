@@ -62,10 +62,8 @@ jobs:
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
           changelog='${{ steps.build_changelog.outputs.changelog }}'
-          if [ -n "$changelog" ]; then
-            escaped_changelog=$(printf '%s\n' "$changelog" | sed 's/\\/&&/g;s/^[[:blank:]]/\\&/;s/$/\\/')
-            sed -i "2i ${escaped_changelog%?}" CHANGELOG.md
-          fi
+          escaped_changelog=$(printf '%s\n' "$changelog" | sed 's/\\/&&/g;s/^[[:blank:]]/\\&/;s/$/\\/')
+          sed -i "2i ${escaped_changelog%?}" CHANGELOG.md
           sed -i "2i ## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')" CHANGELOG.md
           git add -A && git commit -m "chore(docs): update CHANGELOG.MD"
           git push origin master
