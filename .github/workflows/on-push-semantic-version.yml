@@ -1,11 +1,15 @@
+name: Semantic Versioning
+
 on:
   push:
     branches:
       - master
+      - staging
+      - develop
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  CI_COMMIT_MESSAGE: CI Automatic push on develop
+  CI_COMMIT_MESSAGE: CI Automatic push
   CI_COMMIT_AUTHOR: ci@users.noreply.github.com
 
 jobs:
@@ -19,23 +23,34 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get branch name
+        id: branch_name
+        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+
       - name: Perform semantic version
         uses: paulhatch/semantic-version@v5.4.0
         id: semantic_version
         with:
           tag_prefix: "v"
-          major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)"
+          major_pattern: "(?i)\\(MAJOR\\)"
+          minor_pattern: "(?i)\\(MINOR\\)|^(?!.*\\(MAJOR\\)).*$"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
-          bump_each_commit: false
+          bump_each_commit: true
           search_commit_body: true
+
+      - name: Override to minor if MAJOR on non-master branch
+        if: steps.branch_name.outputs.branch != 'master' && contains(github.event.head_commit.message, '(MAJOR)')
+        run: |
+          echo "Overriding MAJOR to MINOR on non-master branch"
+          echo "::set-output name=version::$(echo ${{ steps.semantic_version.outputs.version }} | awk -F. '{$2++; print $1"."$2"."$3}')"
+        id: override_version
 
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          custom_tag: ${{ steps.semantic_version.outputs.version_tag }}
+          custom_tag: ${{ steps.override_version.outputs.version || steps.semantic_version.outputs.version_tag }}
           tag_prefix: ""
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -46,7 +61,7 @@ jobs:
           fromTag: v${{ steps.semantic_version.outputs.previous_version }}
           toTag: ${{ steps.tag_version.outputs.new_tag }}
 
-      - name: Create production release
+      - name: Create release
         uses: ncipollo/release-action@v1
         id: release
         with:
@@ -54,10 +69,36 @@ jobs:
           name: ${{ steps.semantic_version.outputs.version_tag }}
           body: ${{ steps.build_changelog.outputs.changelog }}
           draft: false
-          prerelease: false
-          commit: ${{ steps.semantic_version.outputs.current_commit }}
+          prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
+          commit: ${{ steps.semantic_version.outputs.current_commit }}      
 
-      - name: Update CHANGELOG & update develop branch
+      - name: Update version info JSON
+        run: |
+          new_entry=$(jq -n \
+            --arg hash "${{ github.sha }}" \
+            --arg pr "${{ github.event.pull_request.html_url }}" \
+            --arg user "${{ github.actor }}" \
+            --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+            --arg branch "${{ github.ref_name }}" \
+            '{
+              "hash": $hash,
+              "pull_request_url": $pr,
+              "user": $user,
+              "timestamp": $timestamp,
+              "branch": $branch
+            }')
+
+          if [ -f version_info.json ]; then
+            jq --argjson new_entry "$new_entry" \
+              '. + [$new_entry] | sort_by(.timestamp) | reverse | .[0:10000]' \
+              version_info.json > temp.json && mv temp.json version_info.json
+          else
+            echo "[$new_entry]" > version_info.json
+          fi
+          git add version_info.json
+
+
+      - name: Update CHANGELOG
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
@@ -67,5 +108,4 @@ jobs:
             sed -i "2i ${escaped_changelog%?}" CHANGELOG.md
           fi
           sed -i "2i ## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')" CHANGELOG.md
-          git add -A && git commit -m "chore(docs): update CHANGELOG.MD"
-          git push origin master
+          git add CHANGELOG.md
