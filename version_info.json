@@ -1,7 +1,18 @@
-[{
-  "hash": "4bff810411b8896d7086571928f965873eb1d709",
-  "pull_request_url": "",
-  "user": "EmmanuelHdez",
-  "timestamp": "2024-09-04T06:51:29Z",
-  "branch": "master"
-}]
+[
+  {
+    "hash": "43dfee96a2b2d23c452c99f293e0c8d4e2632b7d",
+    "pull_request_url": "",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T08:13:24+0100",
+    "branch": "master",
+    "userPhoto": ""
+  },
+  {
+    "hash": "4bff810411b8896d7086571928f965873eb1d709",
+    "pull_request_url": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T06:51:29Z",
+    "branch": "master"
+  }
+]
