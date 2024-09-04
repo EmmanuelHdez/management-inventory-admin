@@ -148,7 +148,7 @@ function SideMenu () {
 
                         <Menu menuItemStyles={menuItemStyles}>
                             <MenuItem icon={<CategoryIcon />} component={<Link to="/inventory-categories" />}>
-                                Categories                            
+                                Categories sadadsadasd                          
                             </MenuItem>                            
                             <MenuItem icon={<AddHomeWorkIcon />} component={<Link to="/work-areas" />}>
                                 Work Areas
