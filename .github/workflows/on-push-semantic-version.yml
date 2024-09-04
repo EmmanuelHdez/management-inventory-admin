@@ -37,7 +37,7 @@ jobs:
           patch_pattern: "(PATCH)"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
-          bump_each_commit: true
+          bump_each_commit: false
           search_commit_body: true
 
       - name: Override to minor if MAJOR on non-master branch
@@ -78,7 +78,7 @@ jobs:
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
             --arg pr "${{ github.event.pull_request.html_url }}" \
-            --arg user "${{ github.actor }}" \WW
+            --arg user "${{ github.actor }}" \
             --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
             --arg branch "${{ github.ref_name }}" \
             '{
