@@ -75,14 +75,13 @@ jobs:
             --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
             --arg branch "${{ github.ref_name }}" \
             --arg commitInfo "${{ toJson(github.event.head_commit) }}" \
-            --arg userPhoto "${{ github.event.sender.avatar_url }}" \
+            
             '{
               hash: $hash,
               user: $user,
               timestamp: $timestamp,
               branch: $branch,
               commitInfo: $commitInfo,
-              userPhoto: $userPhoto
             }')
 
           echo "New entry to add:"
