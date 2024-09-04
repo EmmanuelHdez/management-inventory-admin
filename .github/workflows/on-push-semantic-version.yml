@@ -67,11 +67,13 @@ jobs:
       - name: Update version info JSON
         run: |
           echo "Output GitHub information:"
-          echo '${{ toJson(github) }}' | jq '.'          
+          echo '${{ toJson(github) }}' | jq '.'
+
+          commit_info='${{ toJson(github.event.head_commit) }}'          
 
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
-            --argjson commitInfo "${{ toJson(github.event.head_commit) }}" \
+            --argjson commitInfo "$commit_info" \
             --arg pr2 "${{ github.event.pull_request._links.html.href }}" \
             --arg user "${{ github.actor }}" \
             --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
