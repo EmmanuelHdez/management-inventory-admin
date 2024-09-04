@@ -1,9 +1,11 @@
-name: Semantic Versioning Release Version
+name: Semantic Versioning
 
 on:
   push:
     branches:
       - master
+      - staging
+      - develop
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -12,6 +14,7 @@ env:
 
 jobs:
   semantic_version:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -36,7 +39,14 @@ jobs:
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
           bump_each_commit: false
-          search_commit_body: true     
+          search_commit_body: true
+
+      - name: Override to minor if MAJOR on non-master branch
+        if: steps.branch_name.outputs.branch != 'master' && contains(github.event.head_commit.message, '(MAJOR)')
+        run: |
+          echo "Overriding MAJOR to MINOR on non-master branch"
+          echo "version=$(echo ${{ steps.semantic_version.outputs.version }} | awk -F. '{$2++; print $1"."$2"."$3}')" >> $GITHUB_OUTPUT
+        id: override_version
 
       - name: Bump version and push tag
         id: tag_version
