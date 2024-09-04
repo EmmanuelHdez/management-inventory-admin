@@ -75,6 +75,12 @@ jobs:
 
       - name: Update version info JSON
         run: |
+          echo "Imprimiendo el objeto github completo:"
+          echo '${{ toJson(github) }}' | jq '.'
+
+          echo "Imprimiendo github.event:"
+          echo '${{ toJson(github.event) }}' | jq '.'
+
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
             --arg pr "${{ github.event.pull_request.html_url }}" \
@@ -90,8 +96,11 @@ jobs:
               "user": $user,
               "timestamp": $timestamp,
               "branch": $branch,
-              "userPhoto": $userPhoto,
+              "userPhoto": $userPhoto
             }')
+
+          echo "Nueva entrada a añadir:"
+          echo "$new_entry" | jq '.'
 
           if [ -f version_info.json ]; then
             jq --argjson new_entry "$new_entry" \
