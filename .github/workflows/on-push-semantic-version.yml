@@ -32,8 +32,8 @@ jobs:
         id: semantic_version
         with:
           tag_prefix: "v"
-          major_pattern: "(?i)\\(MAJOR\\)"
-          minor_pattern: "(?i)\\(MINOR\\)|^(?!.*\\(MAJOR\\)).*$"
+          major_pattern: "(MAJOR)"
+          minor_pattern: "(MINOR)"
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
           bump_each_commit: true
