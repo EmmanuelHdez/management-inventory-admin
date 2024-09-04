@@ -71,7 +71,7 @@ jobs:
 
           new_entry=$(jq -n \
             --arg hash "${{ github.sha }}" \
-            --arg commitInfo "${{ github.event.head_commit }}" \
+            --arg commitInfo "${{ toJson(github.event.head_commit) }}" \
             --arg pr2 "${{ github.event.pull_request._links.html.href }}" \
             --arg user "${{ github.actor }}" \
             --arg timestamp "$(TZ='Europe/London' date +"%Y-%m-%dT%H:%M:%S%z")" \
