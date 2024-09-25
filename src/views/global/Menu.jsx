@@ -70,6 +70,36 @@ function SideMenu () {
 
     }
 
+    const menuItemStylesdsa = {
+        root: {
+            fontSize: '13px',
+            fontWeight: '400'
+        },
+        icon: {
+            color: '#ffffff',
+            [`&.${menuClasses.disabled}`]: {
+                color: '#9fb6cf',
+            },
+        },
+        SubMenuExpandIcon: {
+            color: '#ffffff',
+        },
+
+        button: {
+            [`&.${menuClasses.disabled}`]: {
+              color: '#9fb6cf',
+            },
+            '&:hover': {
+              backgroundColor: rgbaConverter('#38bdf8', 1),
+              color: '#ffffff',
+            },
+        },
+        label: ({ open }) => ({
+            fontWeight: open ? 600 : undefined,
+        }),
+
+    }
+
 
     
     return (
