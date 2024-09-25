@@ -104,7 +104,7 @@ function SideMenu () {
 
                         <Menu menuItemStyles={menuItemStyles} className="my-[15px]">
                             <MenuItem icon={<HomeIcon />} component={<Link to="/"/>}>
-                                Dashboard                                
+                                Dashboard Changes                               
                             </MenuItem>
                         </Menu>
 
