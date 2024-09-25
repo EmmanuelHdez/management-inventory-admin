@@ -45,7 +45,7 @@ jobs:
             if [[ $line == *"(MAJOR)"* ]]; then
               echo "🚀 $line" >> changelog.md
             elif [[ $line == *"(MINOR)"* ]]; then
-              echo "✨ $line" >> changelog.md
+              echo "🚀 $line" >> changelog.md
             elif [[ $line == *"(PATCH)"* ]]; then
               echo "🐛 $line" >> changelog.md
             else
@@ -73,13 +73,15 @@ jobs:
           body: |
             ${{ steps.generate_changelog.outputs.CHANGELOG }}
             
-            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_version }}...${{ steps.tag_version.outputs.new_tag }})
+            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
           prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
           commit: ${{ steps.semantic_version.outputs.current_commit }}     
 
       - name: Update version info JSON
         run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
           echo "Output GitHub information:"
           echo '${{ toJson(github) }}' | jq '.'
 
