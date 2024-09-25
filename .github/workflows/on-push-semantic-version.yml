@@ -57,11 +57,11 @@ jobs:
               "categories": [
                 {
                   "title": "🚀 Features",
-                  "labels": ["MINOR", "MAJOR"]
+                  "labels": ["feature", "enhancement", "MINOR", "MAJOR"]
                 },
                 {
                   "title": "🐛 Fixes",
-                  "labels": ["PATCH"]
+                  "labels": ["fix", "bugfix", "bug", "PATCH"]
                 }
               ],
               "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
