@@ -1,5 +1,31 @@
 [
   {
+    "hash": "3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab",
+      "message": "Merge pull request #45 from EmmanuelHdez/feature/github-fixes\n\n(PATCH) - Por favor Dios",
+      "timestamp": "2024-09-25T14:37:18-06:00",
+      "tree_id": "299f7dc6146ee74659bc5bb1a70ec0cf5024acde",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T21:37:31+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
     "hash": "d7f27e1f6b2fa683416c803b9b23977f08dace71",
     "commitInfo": {
       "author": {
