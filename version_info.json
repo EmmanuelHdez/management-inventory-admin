@@ -1,5 +1,31 @@
 [
   {
+    "hash": "177653c10a5c97479d84a631f9e9b2d904f0c73c",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "177653c10a5c97479d84a631f9e9b2d904f0c73c",
+      "message": "Merge pull request #48 from EmmanuelHdez/feature/github-fixes\n\n(PATCH) - Fix the commiter and tag",
+      "timestamp": "2024-09-25T16:33:51-06:00",
+      "tree_id": "ea3d5c7819795b7755fdeb2c4ec4da8c12e74167",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/177653c10a5c97479d84a631f9e9b2d904f0c73c"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T23:34:04+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
     "hash": "3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab",
     "commitInfo": {
       "author": {
