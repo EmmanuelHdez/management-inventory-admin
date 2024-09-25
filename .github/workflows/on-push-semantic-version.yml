@@ -45,7 +45,7 @@ jobs:
             if [[ $line == *"(MAJOR)"* ]]; then
               echo "🚀 $line" >> changelog.md
             elif [[ $line == *"(MINOR)"* ]]; then
-              echo "🚀 $line" >> changelog.md
+              echo "✨ $line" >> changelog.md
             elif [[ $line == *"(PATCH)"* ]]; then
               echo "🐛 $line" >> changelog.md
             else
@@ -55,6 +55,11 @@ jobs:
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           cat changelog.md >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Get previous tag
+        id: previoustag
+        run: |
+          echo "previous_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
 
       - name: Bump version and push tag
         id: tag_version
@@ -62,7 +67,13 @@ jobs:
         with:
           custom_tag: ${{ steps.override_version.outputs.version || steps.semantic_version.outputs.version_tag }}
           tag_prefix: ""
-          github_token: ${{ secrets.GITHUB_TOKEN }}      
+          github_token: ${{ secrets.GITHUB_TOKEN }}   
+
+      - name: Debug version information
+        run: |
+          echo "Previous tag: ${{ steps.previoustag.outputs.previous_tag }}"
+          echo "New tag: ${{ steps.tag_version.outputs.new_tag }}"
+          echo "Previous tag from tag_version: ${{ steps.tag_version.outputs.previous_tag }}"   
 
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -73,7 +84,7 @@ jobs:
           body: |
             ${{ steps.generate_changelog.outputs.CHANGELOG }}
             
-            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
+            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.previoustag.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
           prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
           commit: ${{ steps.semantic_version.outputs.current_commit }}     
