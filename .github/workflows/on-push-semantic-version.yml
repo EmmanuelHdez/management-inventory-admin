@@ -121,11 +121,30 @@ jobs:
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
+          
+          echo "Changelog content:"
+          echo "${{ steps.build_changelog.outputs.changelog }}"
+          
           changelog='${{ steps.build_changelog.outputs.changelog }}'
           if [ -n "$changelog" ]; then
-            echo -e "## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+            echo "Updating CHANGELOG.md"
+            echo -e "## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md.tmp
+            mv CHANGELOG.md.tmp CHANGELOG.md
+            echo "CHANGELOG.md updated"
+          else
+            echo "Changelog is empty, not updating CHANGELOG.md"
           fi
+          
+          echo "Content of CHANGELOG.md:"
+          cat CHANGELOG.md
+          
           git add CHANGELOG.md
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit in CHANGELOG.md"
+          else
+            echo "Changes detected in CHANGELOG.md"
+          fi
           
       - name: Commit and push changes
         run: |
