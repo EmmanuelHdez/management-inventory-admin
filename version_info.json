@@ -1,5 +1,31 @@
 [
   {
+    "hash": "d7f27e1f6b2fa683416c803b9b23977f08dace71",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "d7f27e1f6b2fa683416c803b9b23977f08dace71",
+      "message": "Merge pull request #44 from EmmanuelHdez/feature/github-fixes\n\n(MINOR) - updates on redame",
+      "timestamp": "2024-09-25T13:37:07-06:00",
+      "tree_id": "b848b4fea6a8c768c07f56a056647fc1144cc4a9",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/d7f27e1f6b2fa683416c803b9b23977f08dace71"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T20:37:20+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
     "hash": "11d84cee7192ef3f59b992fd90197a06d09fed5e",
     "commitInfo": {
       "author": {
