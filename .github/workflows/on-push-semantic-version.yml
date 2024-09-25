@@ -73,7 +73,7 @@ jobs:
           body: |
             ${{ steps.generate_changelog.outputs.CHANGELOG }}
             
-            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
+            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_version }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
           prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
           commit: ${{ steps.semantic_version.outputs.current_commit }}     
