@@ -48,7 +48,7 @@ jobs:
 
       - name: "Build Changelog"
         id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v3.7.0
+        uses: mikepenz/release-changelog-builder-action@{latest-release}
         with:
           fromTag: v${{ steps.semantic_version.outputs.previous_version }}
           toTag: ${{ steps.tag_version.outputs.new_tag }}
@@ -65,7 +65,7 @@ jobs:
                 }
               ],
               "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-              "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
+              "pr_template": "- {title}\n   - PR: #{number}",
               "empty_template": "- No changes"
             }
 
