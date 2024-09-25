@@ -36,7 +36,25 @@ jobs:
           version_format: "${major}.${minor}.${patch}-rc${increment}"
           user_format_type: "csv"
           bump_each_commit: false
-          search_commit_body: true      
+          search_commit_body: true  
+             
+      - name: Generate changelog
+        id: generate_changelog
+        run: |
+          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s" | while read -r line; do
+            if [[ $line == *"(MAJOR)"* ]]; then
+              echo "🚀 $line" >> changelog.md
+            elif [[ $line == *"(MINOR)"* ]]; then
+              echo "✨ $line" >> changelog.md
+            elif [[ $line == *"(PATCH)"* ]]; then
+              echo "🐛 $line" >> changelog.md
+            else
+              echo "- $line" >> changelog.md
+            fi
+          done
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          cat changelog.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Bump version and push tag
         id: tag_version
@@ -44,41 +62,21 @@ jobs:
         with:
           custom_tag: ${{ steps.override_version.outputs.version || steps.semantic_version.outputs.version_tag }}
           tag_prefix: ""
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "Build Changelog"
-        id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v3.7.0
-        with:
-          fromTag: v${{ steps.semantic_version.outputs.previous_version }}
-          toTag: ${{ steps.tag_version.outputs.new_tag }}
-          configuration: |
-            {
-              "categories": [
-                {
-                  "title": "🚀 Features",
-                  "labels": ["feature", "enhancement", "MINOR", "MAJOR"]
-                },
-                {
-                  "title": "🐛 Fixes",
-                  "labels": ["fix", "bugfix", "bug", "PATCH"]
-                }
-              ],
-              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-              "pr_template": "- {title}\n   - PR: #{number}",
-              "empty_template": "- No changes"
-            }
+          github_token: ${{ secrets.GITHUB_TOKEN }}      
 
       - name: Create release
         uses: ncipollo/release-action@v1
         id: release
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: ${{ steps.semantic_version.outputs.version_tag }}
-          body: ${{ steps.build_changelog.outputs.changelog }}
+          name: Release ${{ steps.semantic_version.outputs.version_tag }}
+          body: |
+            ${{ steps.generate_changelog.outputs.CHANGELOG }}
+            
+            [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.tag_version.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
           prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
-          commit: ${{ steps.semantic_version.outputs.current_commit }}      
+          commit: ${{ steps.semantic_version.outputs.current_commit }}     
 
       - name: Update version info JSON
         run: |
@@ -115,38 +113,9 @@ jobs:
           else
             echo "[$new_entry]" > version_info.json
           fi
-          git add version_info.json
-
-      - name: Update CHANGELOG
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
-          
-          echo "Changelog content:"
-          echo "${{ steps.build_changelog.outputs.changelog }}"
-          
-          changelog='${{ steps.build_changelog.outputs.changelog }}'
-          if [ -n "$changelog" ]; then
-            echo "Updating CHANGELOG.md"
-            echo -e "## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md.tmp
-            mv CHANGELOG.md.tmp CHANGELOG.md
-            echo "CHANGELOG.md updated"
-          else
-            echo "Changelog is empty, not updating CHANGELOG.md"
-          fi
-          
-          echo "Content of CHANGELOG.md:"
-          cat CHANGELOG.md
-          
-          git add CHANGELOG.md
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit in CHANGELOG.md"
-          else
-            echo "Changes detected in CHANGELOG.md"
-          fi
+          git add version_info.json      
           
       - name: Commit and push changes
         run: |
-          git commit -m "chore: update CHANGELOG.md and version_info.json [skip ci]"
+          git commit -m "chore: update version_info.json [skip ci]"
           git push
