@@ -52,6 +52,22 @@ jobs:
         with:
           fromTag: v${{ steps.semantic_version.outputs.previous_version }}
           toTag: ${{ steps.tag_version.outputs.new_tag }}
+          configuration: |
+            {
+              "categories": [
+                {
+                  "title": "🚀 Features",
+                  "labels": ["MINOR", "MAJOR"]
+                },
+                {
+                  "title": "🐛 Fixes",
+                  "labels": ["PATCH"]
+                }
+              ],
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "pr_template": "- ${{TITLE}}\n   - PR: #${{NUMBER}}",
+              "empty_template": "- No changes"
+            }
 
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -107,12 +123,10 @@ jobs:
           git config --global user.email "${{ env.CI_COMMIT_AUTHOR }}"
           changelog='${{ steps.build_changelog.outputs.changelog }}'
           if [ -n "$changelog" ]; then
-            escaped_changelog=$(printf '%s\n' "$changelog" | sed 's/\\/&&/g;s/^[[:blank:]]/\\&/;s/$/\\/')
-            sed -i "2i ${escaped_changelog%?}" CHANGELOG.md
+            echo -e "## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')\n\n$changelog\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
           fi
-          sed -i "2i ## ${{ steps.semantic_version.outputs.version_tag }} - $(date +'%d-%m-%Y')" CHANGELOG.md
           git add CHANGELOG.md
-
+          
       - name: Commit and push changes
         run: |
           git commit -m "chore: update CHANGELOG.md and version_info.json [skip ci]"
