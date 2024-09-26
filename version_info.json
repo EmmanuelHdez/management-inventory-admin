@@ -1,0 +1,323 @@
+[
+  {
+    "hash": "4dfc979dc7904937ba345a732116d326f1c1c6e1",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "4dfc979dc7904937ba345a732116d326f1c1c6e1",
+      "message": "Merge pull request #52 from EmmanuelHdez/feature/github-fixes\n\n(MAJOR) - Importan update",
+      "timestamp": "2024-09-25T23:36:41-06:00",
+      "tree_id": "a69b2b498a88ed3f77074813a7483e672b6d0d8b",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/4dfc979dc7904937ba345a732116d326f1c1c6e1"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-26T06:36:54+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "36aadb723eb9ad86c30ffa29209218e721e0a225",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "36aadb723eb9ad86c30ffa29209218e721e0a225",
+      "message": "Merge pull request #51 from EmmanuelHdez/feature/github-fixes\n\n(MINOR) - Updates on messages - Bolos",
+      "timestamp": "2024-09-25T23:23:38-06:00",
+      "tree_id": "b7f3eaeb54b830d2f8613a65ec5126c4cee38dfa",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/36aadb723eb9ad86c30ffa29209218e721e0a225"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-26T06:23:51+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "0fade7f4db555c7ffca00b5a9d37f686bd0d9932",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "0fade7f4db555c7ffca00b5a9d37f686bd0d9932",
+      "message": "Merge pull request #49 from EmmanuelHdez/feature/github-fixes\n\n(PATCH) - Por favor Dios - BOlos bonito",
+      "timestamp": "2024-09-25T17:04:53-06:00",
+      "tree_id": "a688fea2620ae84649fc9e1c265a785e16a08532",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/0fade7f4db555c7ffca00b5a9d37f686bd0d9932"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-26T00:05:05+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "177653c10a5c97479d84a631f9e9b2d904f0c73c",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "177653c10a5c97479d84a631f9e9b2d904f0c73c",
+      "message": "Merge pull request #48 from EmmanuelHdez/feature/github-fixes\n\n(PATCH) - Fix the commiter and tag",
+      "timestamp": "2024-09-25T16:33:51-06:00",
+      "tree_id": "ea3d5c7819795b7755fdeb2c4ec4da8c12e74167",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/177653c10a5c97479d84a631f9e9b2d904f0c73c"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T23:34:04+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab",
+      "message": "Merge pull request #45 from EmmanuelHdez/feature/github-fixes\n\n(PATCH) - Por favor Dios",
+      "timestamp": "2024-09-25T14:37:18-06:00",
+      "tree_id": "299f7dc6146ee74659bc5bb1a70ec0cf5024acde",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/3dde0c5c87ed3bcf8aaae1dd42309a13a15d79ab"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T21:37:31+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "d7f27e1f6b2fa683416c803b9b23977f08dace71",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "d7f27e1f6b2fa683416c803b9b23977f08dace71",
+      "message": "Merge pull request #44 from EmmanuelHdez/feature/github-fixes\n\n(MINOR) - updates on redame",
+      "timestamp": "2024-09-25T13:37:07-06:00",
+      "tree_id": "b848b4fea6a8c768c07f56a056647fc1144cc4a9",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/d7f27e1f6b2fa683416c803b9b23977f08dace71"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T20:37:20+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "11d84cee7192ef3f59b992fd90197a06d09fed5e",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "11d84cee7192ef3f59b992fd90197a06d09fed5e",
+      "message": "Merge pull request #43 from EmmanuelHdez/feature/small-updates\n\n(PATCH) - dibe fix",
+      "timestamp": "2024-09-25T13:21:24-06:00",
+      "tree_id": "30261692a245477ebc7f854a703854e496098926",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/11d84cee7192ef3f59b992fd90197a06d09fed5e"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-25T20:21:41+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "8a903988182c03a84468bf697f75a08bf09ab2a9",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "8a903988182c03a84468bf697f75a08bf09ab2a9",
+      "message": "Merge pull request #40 from EmmanuelHdez/feature/small-updates\n\n(MAJOR) feat: change resource name and add documentation",
+      "timestamp": "2024-09-04T13:44:04-06:00",
+      "tree_id": "5366c2cbd1b4148be4757e57b736b3206b416482",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/8a903988182c03a84468bf697f75a08bf09ab2a9"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T20:44:23+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "84208bfd6a5519105fcea0d4923ab5a1243c8c45",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "84208bfd6a5519105fcea0d4923ab5a1243c8c45",
+      "message": "Merge pull request #39 from EmmanuelHdez/feature/small-updates\n\n(MAJOR) - a very big update",
+      "timestamp": "2024-09-04T13:36:59-06:00",
+      "tree_id": "bec42c560dea66a40e4c5d84f2d535275981b285",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/84208bfd6a5519105fcea0d4923ab5a1243c8c45"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T20:37:18+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "5c6824dc7899d8e6ad19b4849b1fc05be32e7393",
+    "commitInfo": {
+      "author": {
+        "email": "84370797+EmmanuelHdez@users.noreply.github.com",
+        "name": "EmmanuelHdez",
+        "username": "EmmanuelHdez"
+      },
+      "committer": {
+        "email": "noreply@github.com",
+        "name": "GitHub",
+        "username": "web-flow"
+      },
+      "distinct": true,
+      "id": "5c6824dc7899d8e6ad19b4849b1fc05be32e7393",
+      "message": "Merge pull request #38 from EmmanuelHdez/feature/small-updates\n\n(PATCH) - Por favor Dios",
+      "timestamp": "2024-09-04T02:55:31-06:00",
+      "tree_id": "d875f98ca0aea1c478a45510e7c363a62656e65d",
+      "url": "https://github.com/EmmanuelHdez/management-inventory-admin/commit/5c6824dc7899d8e6ad19b4849b1fc05be32e7393"
+    },
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:55:46+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "d8ecf42835e4a022b9c273f952a542964cbeaa01",
+    "commitInfo": "Object",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:48:55+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "0856f6f7ad9101168e35ab87968ed4d4d356a360",
+    "commitInfo": "Object",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:44:52+0100",
+    "branch": "master",
+    "userPhoto": "https://avatars.githubusercontent.com/u/84370797?v=4"
+  },
+  {
+    "hash": "b6494dc684618d2f64c877054ca7f49da865a579",
+    "commitInfo": "Object",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:32:35+0100",
+    "branch": "master",
+    "userPhoto": ""
+  },
+  {
+    "hash": "185624f5126c492ac1dba24481601b0633b3988e",
+    "pull_request_url": "",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T09:28:46+0100",
+    "branch": "master",
+    "userPhoto": ""
+  },
+  {
+    "hash": "2643b711706d642c80f97e01f16b0607b9f1549d",
+    "pull_request_url": "",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T08:21:05+0100",
+    "branch": "master",
+    "userPhoto": ""
+  },
+  {
+    "hash": "43dfee96a2b2d23c452c99f293e0c8d4e2632b7d",
+    "pull_request_url": "",
+    "pull_request_url2": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T08:13:24+0100",
+    "branch": "master",
+    "userPhoto": ""
+  },
+  {
+    "hash": "4bff810411b8896d7086571928f965873eb1d709",
+    "pull_request_url": "",
+    "user": "EmmanuelHdez",
+    "timestamp": "2024-09-04T06:51:29Z",
+    "branch": "master"
+  }
+]
