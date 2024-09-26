@@ -3,12 +3,16 @@ name: Semantic Versioning For Release
 on:
   push:
     branches:
-      - master
+      - ${MAIN_BRANCH}
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  CI_COMMIT_MESSAGE: CI Automatic push
+  CI_COMMIT_MESSAGE: CI Automatic Release version push
   CI_COMMIT_AUTHOR: ci@users.noreply.github.com
+  MAIN_BRANCH: master
+  STAGING_BRANCH: rc/5.0.0/27-08-2024
+  DEVELOP_BRANCH: develop
+
 
 jobs:
   semantic_version:
@@ -73,7 +77,21 @@ jobs:
         run: |
           echo "Previous tag: ${{ steps.previoustag.outputs.previous_tag }}"
           echo "New tag: ${{ steps.tag_version.outputs.new_tag }}"
-          echo "Previous tag from tag_version: ${{ steps.tag_version.outputs.previous_tag }}"   
+      
+      - name: Get PR message
+        id: pr_message
+        run: |
+          PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+          if [[ $PR_NUMBER =~ ^[0-9]+$ ]]; then
+            PR_MESSAGE=$(gh pr view $PR_NUMBER --json body --jq .body)
+            echo "message<<EOF" >> $GITHUB_OUTPUT
+            echo "$PR_MESSAGE" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "message=" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -83,10 +101,12 @@ jobs:
           name: Release ${{ steps.semantic_version.outputs.version_tag }}
           body: |
             ${{ steps.generate_changelog.outputs.CHANGELOG }}
+
+            ${{ steps.pr_message.outputs.message }}
             
             [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.previoustag.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
-          prerelease: ${{ steps.branch_name.outputs.branch != 'master' }}
+          prerelease: ${{ steps.branch_name.outputs.branch != env.MAIN_BRANCH }}
           commit: ${{ steps.semantic_version.outputs.current_commit }}     
 
       - name: Update version info JSON
@@ -128,7 +148,35 @@ jobs:
           fi
           git add version_info.json      
           
-      - name: Commit and push changes
+      - name: Update version info JSON
         run: |
+          # ... (código existente para actualizar version_info.json)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add version_info.json
+
+      - name: Commit and push changes to multiple branches
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Commit changes
+          git commit -m "chore: update version_info.json [skip ci]"          
+          git push origin HEAD:${MAIN_BRANCH}
+
+          # Push to staging
+          git fetch origin ${STAGING_BRANCH}:${STAGING_BRANCH}
+          git checkout ${STAGING_BRANCH}
+          git checkout ${MAIN_BRANCH} -- version_info.json
+          git add version_info.json
           git commit -m "chore: update version_info.json [skip ci]"
-          git push
+          git push origin ${STAGING_BRANCH}
+
+          # Push to develop
+          git fetch origin ${DEVELOP_BRANCH}:${DEVELOP_BRANCH}
+          git checkout ${DEVELOP_BRANCH}
+          git checkout ${MAIN_BRANCH} -- version_info.json
+          git add version_info.json
+          git commit -m "chore: update version_info.json [skip ci]"
+          git push origin ${DEVELOP_BRANCH}
+          
+          git checkout ${MAIN_BRANCH}
