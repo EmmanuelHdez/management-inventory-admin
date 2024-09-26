@@ -78,8 +78,8 @@ jobs:
           echo "Previous tag: ${{ steps.previoustag.outputs.previous_tag }}"
           echo "New tag: ${{ steps.tag_version.outputs.new_tag }}"
       
-      - name: Get PR body
-        id: pr_body
+      - name: Get PR description
+        id: pr_description
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "SHA: ${{ github.sha }}"
@@ -89,36 +89,36 @@ jobs:
             echo "This is a pull request event"
             echo "PR number: ${{ github.event.pull_request.number }}"
             echo "PR title: ${{ github.event.pull_request.title }}"
-            PR_BODY="${{ github.event.pull_request.body }}"
+            PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           else
             echo "This is not a pull request event, trying to find associated PR"
             PR_NUMBER=$(gh pr list --base ${{ github.ref_name }} --head ${{ github.sha }} --json number --jq '.[0].number')
             if [[ -n "$PR_NUMBER" ]]; then
               echo "Found associated PR number: $PR_NUMBER"
-              PR_BODY=$(gh pr view $PR_NUMBER --json body --jq '.body')
+              PR_DESCRIPTION=$(gh pr view $PR_NUMBER --json body --jq '.body')
             else
               echo "No associated PR found"
-              PR_BODY="No associated PR found"
+              PR_DESCRIPTION="No associated PR found"
             fi
           fi
           
-          if [[ -n "$PR_BODY" ]]; then
-            echo "body<<EOF" >> $GITHUB_OUTPUT
-            echo "$PR_BODY" >> $GITHUB_OUTPUT
+          if [[ -n "$PR_DESCRIPTION" ]]; then
+            echo "description<<EOF" >> $GITHUB_OUTPUT
+            echo "$PR_DESCRIPTION" >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
-            echo "body_found=true" >> $GITHUB_OUTPUT
+            echo "description_found=true" >> $GITHUB_OUTPUT
           else
-            echo "body=No PR body found" >> $GITHUB_OUTPUT
-            echo "body_found=false" >> $GITHUB_OUTPUT
+            echo "description=No PR description found" >> $GITHUB_OUTPUT
+            echo "description_found=false" >> $GITHUB_OUTPUT
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug PR body
+      - name: Debug PR description
         run: |
-          echo "PR body found: ${{ steps.pr_body.outputs.body_found }}"
-          echo "PR body:"
-          echo "${{ steps.pr_body.outputs.body }}"
+          echo "PR description found: ${{ steps.pr_description.outputs.description_found }}"
+          echo "PR description:"
+          echo "${{ steps.pr_description.outputs.description }}"
 
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -130,7 +130,7 @@ jobs:
             ${{ steps.generate_changelog.outputs.CHANGELOG }}
 
             PR Message (Features):
-            ${{ steps.pr_body.outputs.body }}
+            ${{ steps.pr_description.outputs.description }}
             
             [View full changes](https://github.com/${{ github.repository }}/compare/${{ steps.previoustag.outputs.previous_tag }}...${{ steps.tag_version.outputs.new_tag }})
           draft: false
