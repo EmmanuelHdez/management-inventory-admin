@@ -138,6 +138,13 @@ function SideMenu () {
                             </MenuItem>
                         </Menu>
 
+                        <Menu menuItemStyles={menuItemStyles} className="my-[15px]">
+                            <MenuItem icon={<HomeIcon />} component={<Link to="/"/>}>
+                                Dashboard Changes                               
+                            </MenuItem>
+                        </Menu>
+
+
 
                         {/* Inventory Section */}
 
