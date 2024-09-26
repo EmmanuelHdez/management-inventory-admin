@@ -3,7 +3,7 @@ name: Semantic Versioning For Release
 on:
   push:
     branches:
-      - ${MAIN_BRANCH}
+      - master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
